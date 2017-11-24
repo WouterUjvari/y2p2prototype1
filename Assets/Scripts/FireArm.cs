@@ -4,25 +4,46 @@ using UnityEngine;
 
 public class FireArm : MonoBehaviour
 {
-
+    public Aim myAim;
+    public bool semiAutomatic;
     public GameObject projectile;
-    public Transform muzzle;
+    public Transform muzzleFake;
+    public Transform muzzleReal;
     public float force;
 
     void Update()
     {
-        Shoot();
+        Debug.DrawLine(muzzleFake.transform.position, myAim.myTarget, Color.blue);
+
+        if (semiAutomatic)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+                
+            }
+        }
+        else
+        {
+            if (Input.GetButton("Fire1"))
+            {
+                Shoot();
+                
+            }
+        }
     }
 
     void Shoot()
     {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            GameObject g = Instantiate(projectile, muzzle);
-            g.transform.SetParent(null);
-            g.GetComponent<Rigidbody>().AddForce(transform.forward * force);
+        //Fake
+        GameObject myProjectile = Instantiate(projectile, muzzleFake.transform.position, Quaternion.identity);      
+        myProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget - muzzleFake.transform.position).normalized * force, ForceMode.Impulse);       
+        print("pew");
 
+        //Real
 
-        }
+        Instantiate(myProjectile, muzzleReal.transform.position, Quaternion.identity);
+
     }
+  
 }
