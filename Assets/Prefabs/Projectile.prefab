@@ -121,11 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733c7ec2e26aa51459ae83007f93f082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyOnImpact: 0
-  dropOnImpact: 1
+  destroyOnImpact: 1
+  dropOnImpact: 0
   stickOnImpact: 0
   myFriend: {fileID: 0}
-  extraForce: 10
+  extraForce: 20
   lifetime: 0
   lifetimeAfterDrop: 0
-  useGravity: 1
+  useGravity: 0

@@ -12,8 +12,20 @@ public class FireArm : MonoBehaviour
     public float force;
     private float timer;
     public float fireRate;
+
+    private Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+
+
     
 
+
+    
     void Update()
     {
         if (Aim.debugMode)
@@ -50,8 +62,10 @@ public class FireArm : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
+        anim.SetTrigger("tShoot");
+
         timer = 1/fireRate;
         print("pew");
 
