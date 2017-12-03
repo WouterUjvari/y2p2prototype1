@@ -122,9 +122,15 @@
     <Compile Include="Assets\Other\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Other\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Other\Standard Assets\Utility\WaypointProgressTracker.cs" />
+    <Compile Include="Assets\Scripts\ADS.cs" />
     <Compile Include="Assets\Scripts\Aim.cs" />
+    <Compile Include="Assets\Scripts\AnimScriptGun.cs" />
     <Compile Include="Assets\Scripts\FireArm.cs" />
+    <Compile Include="Assets\Scripts\Follow.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Recoil.cs" />
+    <Compile Include="Assets\Scripts\Reload.cs" />
+    <Compile Include="Assets\Scripts\ReloadGun.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Other\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

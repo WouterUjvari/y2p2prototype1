@@ -15,11 +15,15 @@ public class Aim : MonoBehaviour {
         if (debugMode)
         {
             Debug.DrawRay(gameObject.transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
+            Time.timeScale = 0.5f;
+            
         }
 
         if (Input.GetKeyDown("`"))
         {
             debugMode = !debugMode;
+            Time.timeScale = 1f;
+            
         }
         
 

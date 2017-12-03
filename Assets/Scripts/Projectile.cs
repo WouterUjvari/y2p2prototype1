@@ -17,6 +17,8 @@ public class Projectile : MonoBehaviour {
 
     public bool useGravity;
 
+    
+
 
 
     void Start()
@@ -85,7 +87,7 @@ public class Projectile : MonoBehaviour {
             Destroy(myFriend);
             GetComponent<MeshRenderer>().enabled = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameObject.transform.SetParent(other.transform);
+            //gameObject.transform.SetParent(other.transform);
             
         }
             

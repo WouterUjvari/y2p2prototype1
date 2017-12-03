@@ -13,11 +13,19 @@ public class FireArm : MonoBehaviour
     private float timer;
     public float fireRate;
 
-    private Animator anim;
+    public Animator anim;
+
+    public AudioSource Gunshot;
+    public AudioSource GunReceive;
+    public AudioSource GunSlide;
+
+    public ReloadGun myReload;
+
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        myReload = GetComponent<ReloadGun>();
     }
 
 
@@ -64,28 +72,91 @@ public class FireArm : MonoBehaviour
 
     public void Shoot()
     {
-        anim.SetTrigger("tShoot");
+        if (myReload != null )
+        {
+            if ( myReload.ammoInMagCurrent > 0 && !myReload.reloadingATM)
+            {
+                anim.SetTrigger("tShoot");
 
-        timer = 1/fireRate;
-        print("pew");
+                timer = 1 / fireRate;
+                print("pew");
 
-        //Fake
-        GameObject myProjectile = Instantiate(projectile, muzzleFake.transform.position, muzzleFake.rotation);       
-        myProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget - muzzleFake.transform.position).normalized * (force + projectile.GetComponent<Projectile>().extraForce), ForceMode.Impulse);
-        myProjectile.GetComponent<BoxCollider>().enabled = false;
-        myProjectile.name = myProjectile.name + ("fake");       
+                /*
+                //Fake
+                GameObject myProjectile = Instantiate(projectile, muzzleFake.transform.position, muzzleFake.rotation);
+                myProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget - muzzleFake.transform.position).normalized * (force + projectile.GetComponent<Projectile>().extraForce), ForceMode.Impulse);
+                myProjectile.GetComponent<BoxCollider>().enabled = false;
+                myProjectile.name = myProjectile.name + ("fake");
 
-        //Real        
-        GameObject myFakeProjectile = Instantiate(projectile, muzzleReal.transform.position, muzzleReal.rotation);
-        myFakeProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget -muzzleReal.transform.position).normalized * (force + projectile.GetComponent<Projectile>().extraForce), ForceMode.Impulse);
-        myFakeProjectile.GetComponent<MeshRenderer>().enabled = false;
-        myFakeProjectile.GetComponent<BoxCollider>().enabled = true;
-        myFakeProjectile.name = myFakeProjectile.name + ("real");
+                //Real        
+                GameObject myFakeProjectile = Instantiate(projectile, muzzleReal.transform.position, muzzleReal.rotation);
+                myFakeProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget - muzzleReal.transform.position).normalized * (force + projectile.GetComponent<Projectile>().extraForce), ForceMode.Impulse);
+                //myFakeProjectile.GetComponent<MeshRenderer>().enabled = false;
+                myFakeProjectile.GetComponent<BoxCollider>().enabled = true;
+                myFakeProjectile.name = myFakeProjectile.name + ("real");
 
 
-        myFakeProjectile.GetComponent<Projectile>().myFriend = myProjectile;
+                myFakeProjectile.GetComponent<Projectile>().myFriend = myProjectile;
+                */
+            }
+
+            else
+            {
+                anim.SetTrigger("tHammer");
+            }
+        }
+        
+        else
+        {
+            anim.SetTrigger("tShoot");
+
+            timer = 1 / fireRate;
+            print("pew");
+
+
+             /*
+            //Fake
+
+            GameObject myProjectile = Instantiate(projectile, muzzleFake.transform.position, muzzleFake.rotation);
+            myProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget - muzzleFake.transform.position).normalized * (force + projectile.GetComponent<Projectile>().extraForce), ForceMode.Impulse);
+            myProjectile.GetComponent<BoxCollider>().enabled = false;
+            myProjectile.name = myProjectile.name + ("fake");
+
+            //Real        
+            GameObject myFakeProjectile = Instantiate(projectile, muzzleReal.transform.position, muzzleReal.rotation);
+            myFakeProjectile.GetComponent<Rigidbody>().AddForce((myAim.myTarget - muzzleReal.transform.position).normalized * (force + projectile.GetComponent<Projectile>().extraForce), ForceMode.Impulse);
+            //myFakeProjectile.GetComponent<MeshRenderer>().enabled = false;
+            myFakeProjectile.GetComponent<BoxCollider>().enabled = true;
+            myFakeProjectile.name = myFakeProjectile.name + ("real");
+
+
+            myFakeProjectile.GetComponent<Projectile>().myFriend = myProjectile;
+
+            */
+        }
+        
+
+
+        
 
 
     }
-  
+
+    public void PlaySoundGunShot()
+    {
+        Gunshot.Play();
+    }
+
+    public void PlaySoundGunReceive()
+    {
+        GunReceive.Play();
+    }
+
+    public void PlaySoundGunSlide(float pitch)
+    {
+        GunSlide.pitch = pitch;
+        GunSlide.Play();
+        
+    }
+
 }
