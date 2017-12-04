@@ -40,6 +40,7 @@ public class ReloadGun : MonoBehaviour {
         if (Input.GetButtonDown("Reload") && ammoInMagCurrent != magSize && firearmScript.myReload != null && !reloadingATM)
         {
             firearmScript.anim.SetTrigger("tReload");
+            firearmScript.camAnim.SetTrigger("pCamerareload");
             reloadingATM = true;
         }
 

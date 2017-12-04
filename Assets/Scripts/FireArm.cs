@@ -14,12 +14,17 @@ public class FireArm : MonoBehaviour
     public float fireRate;
 
     public Animator anim;
+    public Animator camAnim;
 
     public AudioSource Gunshot;
     public AudioSource GunReceive;
     public AudioSource GunSlide;
 
     public ReloadGun myReload;
+
+    public GameObject debugSphere;
+
+    public GameObject flash;
 
 
     void Start()
@@ -77,7 +82,8 @@ public class FireArm : MonoBehaviour
             if ( myReload.ammoInMagCurrent > 0 && !myReload.reloadingATM)
             {
                 anim.SetTrigger("tShoot");
-
+                camAnim.SetTrigger("pCamerakick");
+                HitScan();
                 timer = 1 / fireRate;
                 print("pew");
 
@@ -112,7 +118,7 @@ public class FireArm : MonoBehaviour
 
             timer = 1 / fireRate;
             print("pew");
-
+            //HitScan();
 
              /*
             //Fake
@@ -134,10 +140,33 @@ public class FireArm : MonoBehaviour
 
             */
         }
-        
+    }
+
+    public void HitScan()
+    {
+        print("debug");
+
+        //if(myAim.myTarget != myAim.myDistance.transform.position)
+        //{
+        //   GameObject myDebugSphere = Instantiate(debugSphere, myAim.myTarget, Quaternion.identity);
+        //   Destroy(myDebugSphere, 1);
+        //}
+
+        RaycastHit hit;
+        if (Physics.Raycast(myAim.gameObject.transform.position, myAim.gameObject.transform.forward, out hit, 1000))
+        {
+            print(hit.transform.name);
+
+            GameObject myDebugSphere = Instantiate(debugSphere, hit.point, Quaternion.identity);
+            Destroy(myDebugSphere, 0.1f);
+
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(transform.forward * 100);
+            }
+        }
 
 
-        
 
 
     }
@@ -157,6 +186,11 @@ public class FireArm : MonoBehaviour
         GunSlide.pitch = pitch;
         GunSlide.Play();
         
+    }
+
+    public void Flare(bool active)
+    {
+        flash.SetActive(active);
     }
 
 }

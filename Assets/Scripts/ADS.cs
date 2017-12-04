@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ADS : MonoBehaviour {
 
-    private Animator anim;
+    public Animator anim;
     public GameObject origin;
     public Transform originPosition;
     public GameObject ads;
@@ -41,6 +41,7 @@ public class ADS : MonoBehaviour {
                 parent.transform.position = Vector3.Lerp(parent.transform.position, adsPosition.position, 10 * Time.deltaTime);
                 mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 50, 10 * Time.deltaTime);
                 gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 60, 10 * Time.deltaTime);
+                anim.SetLayerWeight(1, 0.1f);
             }
             else
             {
@@ -48,7 +49,7 @@ public class ADS : MonoBehaviour {
                 parent.transform.position = Vector3.Lerp(parent.transform.position, originPosition.position, 10 * Time.deltaTime);
                 mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 90, 10 * Time.deltaTime);
                 gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 70, 10 * Time.deltaTime);
-
+                anim.SetLayerWeight(1, 0.75f);
             }
         }  
     }
