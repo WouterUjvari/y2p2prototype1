@@ -9,6 +9,7 @@ public class FireArm : MonoBehaviour
     public GameObject projectile;
     public Transform muzzleFake;
     public Transform muzzleReal;
+    //public Transform hitScanMuzzle;
     public float force;
     private float timer;
     public float fireRate;
@@ -25,6 +26,9 @@ public class FireArm : MonoBehaviour
     public GameObject debugSphere;
 
     public GameObject flash;
+
+    public GameObject casing;
+    public Transform casingSpawner;
 
 
     void Start()
@@ -158,16 +162,43 @@ public class FireArm : MonoBehaviour
             print(hit.transform.name);
 
             GameObject myDebugSphere = Instantiate(debugSphere, hit.point, Quaternion.identity);
-            Destroy(myDebugSphere, 0.1f);
+
+
+
+                myDebugSphere.GetComponent<LineRenderer>().SetPosition(1, myDebugSphere.transform.position);
+                myDebugSphere.GetComponent<LineRenderer>().SetPosition(0, muzzleFake.transform.position);
+            
+            
+            
+
+                print("at Distance");
+
+            
+            Destroy(myDebugSphere, 0.05f);
 
             if(hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(transform.forward * 100);
             }
         }
+        else
+        {
+            GameObject myDebugSphere = Instantiate(debugSphere, hit.point, Quaternion.identity);
+            myDebugSphere.GetComponent<LineRenderer>().SetPosition(1, myAim.myDistance.transform.position);
+            myDebugSphere.GetComponent<LineRenderer>().SetPosition(0, muzzleFake.transform.position);
+            Destroy(myDebugSphere, 0.05f);
+        }
 
 
 
+
+    }
+
+    public void SpawnCasing()
+    {
+        GameObject mycasing = Instantiate(casing, casingSpawner.position, casingSpawner.transform.rotation);
+        Destroy(mycasing, 10);
+        mycasing.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up + Vector3.right * Random.Range(13, 15));
 
     }
 
