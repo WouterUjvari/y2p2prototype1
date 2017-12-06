@@ -30,6 +30,8 @@ public class FireArm : MonoBehaviour
     public GameObject casing;
     public Transform casingSpawner;
 
+    
+
 
     void Start()
     {
@@ -45,6 +47,12 @@ public class FireArm : MonoBehaviour
     
     void Update()
     {
+        if (Input.GetKeyDown("f"))
+        {
+            anim.SetTrigger("tInspect");
+            //camAnim.SetTrigger("pCameraInspect");
+        }
+
         if (Aim.debugMode)
         {
             Debug.DrawLine(muzzleFake.transform.position, myAim.myTarget, Color.blue);
@@ -174,7 +182,7 @@ public class FireArm : MonoBehaviour
                 print("at Distance");
 
             
-            Destroy(myDebugSphere, 0.05f);
+            Destroy(myDebugSphere, 0.03f);
 
             if(hit.rigidbody != null)
             {
@@ -186,7 +194,7 @@ public class FireArm : MonoBehaviour
             GameObject myDebugSphere = Instantiate(debugSphere, hit.point, Quaternion.identity);
             myDebugSphere.GetComponent<LineRenderer>().SetPosition(1, myAim.myDistance.transform.position);
             myDebugSphere.GetComponent<LineRenderer>().SetPosition(0, muzzleFake.transform.position);
-            Destroy(myDebugSphere, 0.05f);
+            Destroy(myDebugSphere, 0.03f);
         }
 
 
@@ -222,6 +230,11 @@ public class FireArm : MonoBehaviour
     public void Flare(bool active)
     {
         flash.SetActive(active);
+    }
+
+    public void setDof(float amount)
+    {
+
     }
 
 }

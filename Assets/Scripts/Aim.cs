@@ -8,9 +8,11 @@ public class Aim : MonoBehaviour {
     public Transform myDistance;
     public static bool debugMode = false;
 
+    public Material skyboxMat;
+
     void Update()
     {
-        
+        skyboxMat.SetFloat("_Rotation", Time.time);
 
         if (debugMode)
         {

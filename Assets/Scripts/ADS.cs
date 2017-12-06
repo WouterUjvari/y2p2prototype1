@@ -41,12 +41,12 @@ public class ADS : MonoBehaviour {
                 parent.transform.position = Vector3.Lerp(parent.transform.position, adsPosition.position, 10 * Time.deltaTime);
                 mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 50, 10 * Time.deltaTime);
                 gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 60, 10 * Time.deltaTime);
-                anim.SetLayerWeight(1, 0.1f);
+                anim.SetLayerWeight(1, 0.01f);
             }
             else
             {
                 inADS = false;
-                parent.transform.position = Vector3.Lerp(parent.transform.position, originPosition.position, 10 * Time.deltaTime);
+                parent.transform.position = Vector3.Lerp(parent.transform.position, originPosition.position, 7 * Time.deltaTime);
                 mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 90, 10 * Time.deltaTime);
                 gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, 70, 10 * Time.deltaTime);
                 anim.SetLayerWeight(1, 0.75f);

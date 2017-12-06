@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23213174014574856}
   - component: {fileID: 108633991252830534}
   - component: {fileID: 120091584904491740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: debugSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
