@@ -128,6 +128,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
+            if(Input.GetButton("Fire2"))
+            {
+                movementSettings.ForwardSpeed = 1;
+                movementSettings.StrafeSpeed = 1;
+                movementSettings.BackwardSpeed = 1;
+            }
+            else
+            {
+                movementSettings.ForwardSpeed = 4;
+                movementSettings.StrafeSpeed = 4;
+                movementSettings.BackwardSpeed = 4;
+            }
             RotateView();
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)

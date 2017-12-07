@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireArm : MonoBehaviour
 {
+    public GameObject damageNumber;
     public Aim myAim;
     public bool semiAutomatic;
     public GameObject projectile;
@@ -13,6 +15,8 @@ public class FireArm : MonoBehaviour
     public float force;
     private float timer;
     public float fireRate;
+
+    public float damage;
 
     public Animator anim;
     public Animator camAnim;
@@ -165,16 +169,24 @@ public class FireArm : MonoBehaviour
         //}
 
         RaycastHit hit;
-        if (Physics.Raycast(myAim.gameObject.transform.position, myAim.gameObject.transform.forward, out hit, 1000))
+        if (Physics.Raycast(myAim.gameObject.transform.position, myAim.gameObject.transform.forward, out hit, 1000) && hit.transform.tag != "Projectile")
         {
             print(hit.transform.name);
 
             GameObject myDebugSphere = Instantiate(debugSphere, hit.point, Quaternion.identity);
+            GameObject myDamage = Instantiate(damageNumber, hit.point, transform.rotation);
 
 
 
-                myDebugSphere.GetComponent<LineRenderer>().SetPosition(1, myDebugSphere.transform.position);
-                myDebugSphere.GetComponent<LineRenderer>().SetPosition(0, muzzleFake.transform.position);
+            myDebugSphere.GetComponent<LineRenderer>().SetPosition(1, myDebugSphere.transform.position);
+            myDebugSphere.GetComponent<LineRenderer>().SetPosition(0, muzzleFake.transform.position);
+
+            myDamage.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(15, 17) + Vector3.left * Random.Range(-3, 3) + Vector3.forward * Random.Range(-3, 3));
+            myDamage.transform.LookAt(this.gameObject.transform);
+            myDamage.transform.GetChild(0).gameObject.gameObject.transform.GetChild(0).GetComponent<Text>().text = damage.ToString();
+            Destroy(myDamage, 4);
+
+                
             
             
             
