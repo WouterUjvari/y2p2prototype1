@@ -223,8 +223,8 @@
     <Compile Include="Assets\Scripts\Follow.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\Recoil.cs" />
-    <Compile Include="Assets\Scripts\Reload.cs" />
     <Compile Include="Assets\Scripts\ReloadGun.cs" />
+    <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\VolumetricLight.cs" />
     <Compile Include="Assets\Scripts\VolumetricLightRenderer.cs" />
   </ItemGroup>

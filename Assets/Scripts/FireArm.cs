@@ -54,6 +54,7 @@ public class FireArm : MonoBehaviour
         if (Input.GetKeyDown("f"))
         {
             anim.SetTrigger("tInspect");
+            myReload.reloadingATM = false;
             //camAnim.SetTrigger("pCameraInspect");
         }
 

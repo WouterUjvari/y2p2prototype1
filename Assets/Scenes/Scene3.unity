@@ -4015,7 +4015,7 @@ GameObject:
   - component: {fileID: 726162467}
   m_Layer: 0
   m_Name: BulletCamera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4397,6 +4397,7 @@ MonoBehaviour:
   ads: {fileID: 2034744540}
   adsPosition: {fileID: 0}
   parent: {fileID: 874993564}
+  mainCamera: {fileID: 0}
   gunCamera: {fileID: 1064629626}
   myReload: {fileID: 0}
   canADS: 1

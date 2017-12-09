@@ -11,7 +11,7 @@ public class ADS : MonoBehaviour {
     public Transform adsPosition;
     public GameObject parent;
 
-    private Camera mainCamera;
+    public Camera mainCamera;
     public Camera gunCamera;
 
     public ReloadGun myReload;
