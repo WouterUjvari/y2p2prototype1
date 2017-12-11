@@ -4087,7 +4087,7 @@ GameObject:
   - component: {fileID: 736716120}
   - component: {fileID: 736716119}
   - component: {fileID: 736716118}
-  - component: {fileID: 736716125}
+  - component: {fileID: 736716126}
   m_Layer: 8
   m_Name: Mesh_Gun
   m_TagString: Untagged
@@ -4125,7 +4125,8 @@ AudioSource:
   m_GameObject: {fileID: 736716116}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 00a85c32fdc50724e9ccb3e22e8c1b84,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 6eecc9ba856626d4a9f2ddf142d791e0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4140,7 +4141,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -4206,7 +4207,8 @@ AudioSource:
   m_GameObject: {fileID: 736716116}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 00a85c32fdc50724e9ccb3e22e8c1b84,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8179b5e48cf79034e80e824d4987ad94, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.539
@@ -4287,7 +4289,8 @@ AudioSource:
   m_GameObject: {fileID: 736716116}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 00a85c32fdc50724e9ccb3e22e8c1b84,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 9f5ca70987cc177409ad835f75ffc4df, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4453,20 +4456,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &736716125
-MonoBehaviour:
+--- !u!164 &736716126
+AudioReverbFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 736716116}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -3300
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.54
+  m_ReflectionsLevel: -2560
+  m_ReverbLevel: -229
+  m_ReverbDelay: 0.088
+  m_Diffusion: 79
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 16
 --- !u!1 &766534319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,7 +5569,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTarget: {x: 0, y: 0, z: 0}
   myDistance: {fileID: 1787980050}
+  myfirearm: {fileID: 736716123}
   skyboxMat: {fileID: 2100000, guid: dffb278de0120df47a19fc7202aa8b27, type: 2}
+  source1: {fileID: 736716120}
+  source2: {fileID: 736716119}
+  source3: {fileID: 736716118}
 --- !u!124 &948886974
 Behaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,15 @@ public class Aim : MonoBehaviour {
     public Transform myDistance;
     public static bool debugMode = false;
 
+    public FireArm myfirearm;
+
     public Material skyboxMat;
+
+    public AudioSource source1;
+    public AudioSource source2;
+    public AudioSource source3;
+
+
 
     void Update()
     {
@@ -18,7 +26,16 @@ public class Aim : MonoBehaviour {
         {
             Debug.DrawRay(gameObject.transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
             Time.timeScale = 0.5f;
-            
+            source1.pitch = 0.30f;
+            source2.pitch = 0.6f;
+            source3.pitch = 1;
+
+
+        }else
+        {
+            source1.pitch = 0.65f;
+            source2.pitch = 1.21f;
+            source3.pitch = 2.19f;
         }
 
         if (Input.GetKeyDown("`"))
